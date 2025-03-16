@@ -31,11 +31,11 @@ class Pokemon {
     @Override
     public String toString() {
         return nombre + " (#" + numeroPokedex + ") - " + 
-                tipo1 + (tipo2.isEmpty() ? "" : "/" + 
+                "Tipo 1: "+ tipo1 + " Tipo 2: "+ (tipo2.isEmpty() ? "" : "/" + 
                 tipo2) +", " + 
-                clasificacion + ", Altura: " + altura + 
+                "Clasificación: "+clasificacion + ", Altura: " + altura + 
                 " m, Peso: " + peso + " kg, " +
-               "Habilidades: " + habilidades + 
+               ", Habilidades: " + habilidades + 
                ", Gen: " + generacion + ", Legendario: " + esLegendario;
     }
 
@@ -46,5 +46,11 @@ class Pokemon {
     public String getTipo1() {
         return tipo1;
     }
+
+    // Agregar este getter para habilidades
+    public List<String> getHabilidades() {
+        return habilidades;
+    }
 }
+
 

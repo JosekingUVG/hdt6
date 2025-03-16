@@ -16,5 +16,7 @@ public interface Map<K, V> {
     Set<K> keySet();
     boolean equals(Object other);
     int hashCode();
-    Object values();
+    
+    
+    
 }

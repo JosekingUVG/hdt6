@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Data data = new Data();
+        
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Seleccione la implementación de Map: ");
@@ -14,11 +14,13 @@ public class Main {
         System.out.println("3. LinkedHashMap");
 
         int tipo = scanner.nextInt();
+        Data data = new Data(tipo);
 
         // Obtener la implementación adecuada del Map
         Map<String, Pokemon> pokemonMap = PokemonFactory.getMap(tipo);
 
         System.out.println("Mapa creado con éxito: " + pokemonMap.getClass().getSimpleName());
+        data.imprimirTodosLosPokemon();
 
         Boolean bandera = true;
         while (bandera != false) {
@@ -35,7 +37,7 @@ public class Main {
                 case 1:
                 System.out.println("Ingrese el nombre del pokemon a agregar:");
                 String nombre = scanner.next();
-                data.agregarPokemonColeccion(nombre, tipo);
+                data.agregarPokemonColeccion(nombre);
                 
                 break;
                 case 2:
@@ -43,13 +45,22 @@ public class Main {
                 nombre = scanner.next();
                 data.mostrarPokemonColeccion(nombre);
                 break;
+                case 3:
+                data.mostrarPokemonPorTipo();
+                case 4:
+                data.mostrarTodoPokemonPorTipo();
+                case 5:
+                System.out.println("Escribe la habilidad que deseas: ");
+                String habilidad = scanner.next();
+                data.mostrarPokemonPorHabilidad(habilidad);
+                break;
                 case 6:
                 bandera = false;
                 break;
         }
 
         
-        data.mostrarTodos();
+        
     }
 }
 }
