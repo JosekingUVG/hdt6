@@ -1,3 +1,6 @@
+/**
+ * Crea un objeto pokemon para buscar en la lista de forma más eficiente.
+ */
 package uvg;
 
 import java.util.List;

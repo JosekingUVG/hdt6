@@ -1,3 +1,7 @@
+/*
+ * @Author José Rivera
+ * @Description Clase principal para ejecutar el programa
+ */
 package uvg;
 
 // Clase Main para ejecutar el programa
@@ -20,7 +24,7 @@ public class Main {
         Map<String, Pokemon> pokemonMap = PokemonFactory.getMap(tipo);
 
         System.out.println("Mapa creado con éxito: " + pokemonMap.getClass().getSimpleName());
-        data.imprimirTodosLosPokemon();
+        //data.imprimirTodosLosPokemon(); //Método extra de prueba 
 
         Boolean bandera = true;
         while (bandera != false) {
@@ -47,8 +51,10 @@ public class Main {
                 break;
                 case 3:
                 data.mostrarPokemonPorTipo();
+                break;
                 case 4:
                 data.mostrarTodoPokemonPorTipo();
+                break;
                 case 5:
                 System.out.println("Escribe la habilidad que deseas: ");
                 String habilidad = scanner.next();

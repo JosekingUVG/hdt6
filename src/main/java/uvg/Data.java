@@ -1,3 +1,9 @@
+/**
+ * @autor José Rivera 24376
+ * Universidad del Valle
+ * esta clase se encarga de las operaciones del csv guardandolos en
+ * diccionarios con el nombre del pokemon como llave y sus atributos son los valores
+ */
 package uvg;
 
 import java.io.*;
@@ -9,12 +15,21 @@ class Data {
     private Map<String, Pokemon> listaPokemon;
     private Map<String, Pokemon> coleccionUsuario;
 
+    /*
+     * Constructor inicializa los diccionarios y carga los datos del csv
+     * @param tipoMapa
+     */
     public Data(int tipoMapa) {
         this.listaPokemon = new PokemonFactory().getMap(tipoMapa);
         this.coleccionUsuario = new PokemonFactory().getMap(tipoMapa);
         cargarDatos("src/main/resources/pokemon_data_pokeapi.csv");
     }
 
+    /**
+     * Carga los datos del archivo CSV y los almacena en el mapa listaPokemon.
+     *
+     * @param ruta Ruta del archivo CSV a cargar.
+     */
     private void cargarDatos(String ruta) {
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
             String linea;
@@ -59,10 +74,18 @@ class Data {
         }
     }
 
+    /**
+     * Obtiene el mapa con todos los Pokemon cargados.
+     *
+     * @return Un mapa con el nombre del Pokemon como clave y el objeto Pokemon como valor.
+     */
     public Map<String, Pokemon> getListaPokemon() {
         return listaPokemon;
     }
 
+    /**
+     * Imprime todos los pokemones en la lista
+     */
     public void imprimirTodosLosPokemon() {
         for (String key : listaPokemon.keySet()) {
             System.out.println(listaPokemon.get(key));
@@ -70,6 +93,11 @@ class Data {
     }
 
 
+    /**
+     * Agrega un Pokemon a la colección del usuario.
+     *
+     * @param nombre Nombre del Pokemon a agregar.
+     */
     public void agregarPokemonColeccion(String nombre) {
         if (!listaPokemon.containsKey(nombre)) {
             System.out.println("Error: El Pokémon no se encuentra en los datos.");
@@ -84,6 +112,11 @@ class Data {
         }
     }
 
+    /**
+     * Muestra los datos de un Pokemon en la colección del usuario.
+     *
+     * @param nombre Nombre del Pokemon a mostrar.
+     */
     public void mostrarPokemonColeccion(String nombre) {
         if (coleccionUsuario.isEmpty() || !coleccionUsuario.containsKey(nombre)) {
             System.out.println("Error: El Pokémon no está en la colección del usuario.");
@@ -92,6 +125,9 @@ class Data {
         System.out.println("Datos del Pokémon: " + coleccionUsuario.get(nombre));
     }
 
+    /**
+     * Muestra los Pokemon en la colección del usuario ordenados por Tipo1.
+     */
     public void mostrarPokemonPorTipo() {
         if (coleccionUsuario.isEmpty()) {
             System.out.println("La colección del usuario está vacía.");
@@ -110,6 +146,9 @@ class Data {
         }
     }
 
+    /**
+     * Muestra todos los Pokemon en la colección del usuario ordenados por Tipo1.
+     */
     public void mostrarTodoPokemonPorTipo() {
         if (listaPokemon.isEmpty()) {
             System.out.println("La colección del usuario está vacía.");
@@ -128,6 +167,11 @@ class Data {
         }
     }
 
+    /**
+     * Muestra el nombre del Pokemon que tiene la habilidad indicada por el usuario.
+     *
+     * @param habilidad Habilidad a buscar en los Pokemon.
+     */
     public void mostrarPokemonPorHabilidad(String habilidad) {
         boolean encontrado = false;
     
